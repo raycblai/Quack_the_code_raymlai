@@ -87,6 +87,16 @@ streamlit run cloudwatch_log_streamlit.py
 
 #### Detailed Query Example for Demo
 
+**Assumptions for Demo:**
+
+In this example, we assume there is a `rebooking_log` CloudWatch Log Group that contains log entries with different transaction IDs and messages in the specific format:
+- `Tx_id: 000001, Starting rebooking process`
+- `Tx_id: 000002, Customer ID: 12345 requested rebooking`
+- `Tx_id: 000003, Processing payment for booking change`
+- `Tx_id: 000004, Rebooking completed successfully`
+
+This structured log format allows us to use LLM (Large Language Model) and MCP (Model Context Protocol) server to query and analyze the data, then return results in JSON format for easy processing and display.
+
 For demonstration purposes, use this specific query format:
 
 **Query:**
