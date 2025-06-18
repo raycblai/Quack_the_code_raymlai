@@ -80,10 +80,45 @@ streamlit run cloudwatch_log_streamlit.py
 
 ### Example Queries
 
-- "Find messages with Tx_id 00002 within log group names having 'rebooking' in the us-west-2 region"
+#### Basic Queries
 - "Show error messages from the last hour"
 - "Find all logs containing 'exception' or 'error'"
 - "Get recent logs from application servers"
+
+#### Detailed Query Example for Demo
+
+For demonstration purposes, use this specific query format:
+
+**Query:**
+```
+find message contain "Tx_id: 000004" for all log streams within "rebooking_log" log group from June 15, 2025 00:00:00 to June 17, 2025 00:00:00. If not found, show me the cloudwatch log query. If found, display the response in JSON format as follows:
+```
+
+**Expected JSON Response Format:**
+```json
+[
+  {
+    "Timestamp": "2025-06-14 14:20:29.444",
+    "Message": "Tx_id: 000001, Starting rebooking process"
+  },
+  {
+    "Timestamp": "2025-06-14 14:20:29.444",
+    "Message": "Tx_id: 000001, Customer ID: 12345 requested rebooking"
+  }
+]
+```
+
+**Key Features of This Query:**
+- **Specific Transaction ID Search**: Searches for exact transaction ID "Tx_id: 000004"
+- **Log Group Targeting**: Focuses on the "rebooking_log" log group
+- **Time Range Filtering**: Searches within a specific date range (June 15-17, 2025)
+- **Fallback Behavior**: Shows the CloudWatch query if no results are found
+- **Structured Output**: Returns results in a clean JSON format with timestamp and message
+
+**Additional Query Variations:**
+- "Find messages with Tx_id 00002 within log group names having 'rebooking' in the us-west-2 region"
+- "Search for all transactions between June 1, 2025 and June 30, 2025 in rebooking_log"
+- "Show me the CloudWatch Insights query for finding error messages in the last 24 hours"
 
 ## Architecture
 
